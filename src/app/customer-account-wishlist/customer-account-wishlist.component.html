@@ -1,0 +1,91 @@
+ <!--breadcrumbs area start-->
+ <div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>Wishlist</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--wishlist area start -->
+<!-- <div class="wishlist_page_bg"> -->
+    <div class="container">
+        <div class="wishlist_area">
+            <div class="wishlist_inner">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table_desc wishlist">
+                                <div class="cart_page table-responsive">
+                                    <!-- <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="product_remove">Delete</th>
+                                                <th class="product_thumb">Image</th>
+                                                <th class="product_name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product_quantity">Stock Status</th>
+                                                <th class="product_total">Add To Cart</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="product_remove"><a href="#">X</a></td>
+                                                <td class="product_thumb"><a href="#"><img src="assets\img\s-product\product.jpg" alt=""></a></td>
+                                                <td class="product_name"><a href="#">Handbag fringilla</a></td>
+                                                <td class="product-price">£65.00</td>
+                                                <td class="product_quantity">In Stock</td>
+                                                <td class="product_total"><a href="#">Add To Cart</a></td>
+
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table> -->
+                                    <table class= "table">
+                                        <thead>
+                                            <tr>
+                                                <th class="product_remove">Delete</th>
+                                                <th class="product_thumb">Image</th>
+                                                <th class="product_name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product_total">Total</th>
+                                                <th class="product_total">Add To Cart</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         
+                                            <tr *ngFor = "let f of cartData">              
+                                                <td class="product_remove"><a (click)="removeData(f.productId,f.imageURL1,f.productName)"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="product_thumb"><a [routerLink]="['/productdetail',f.productId]"><img  [src]="f.imageURL1" alt=""></a></td>
+                                                <td class="product_name"><a href="#">{{f.productName}}</a></td>
+                                                <td class="product-price">{{f.price}}</td>
+                                                <td class="product_total">{{f.price * f.quantity}}</td>
+                                                <td class="product_total"><a (click)="addTocart(f)">Add To Cart</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="cart_submit">
+                                        <button type="submit" (click)="updateCart()">UPDATE WISHLIST</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
+
+
+<!--wishlist area end -->

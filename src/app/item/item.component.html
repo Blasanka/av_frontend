@@ -1,0 +1,44 @@
+<article class="single_product">
+<figure>
+<div class="product_thumb">
+    <div *ngIf="this.isButtonVisible1">
+    <a class="primary_img" [routerLink]="['/productdetail',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    <a class="secondary_img" [routerLink]="['/productdetail',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    </div>
+    <div *ngIf="this.isButtonVisible2">
+    <a class="primary_img" [routerLink]="['/directinquiry',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    <a class="secondary_img" [routerLink]="['/directinquiry',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    </div>
+    <div class="label_product">
+        <span class="label_sale">Sale</span>
+    </div>
+    <div class="action_links">
+        <ul>
+            <li class="wishlist"><a (click)="handleAddToWishlist()" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+            <li class="compare"><a href="#" title="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"><i class="ion-ios-search-strong"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="product_content">
+    <div class="product_content_inner">
+        <h4 class="product_name"><a href="product-details.html">{{productItem.product_name}}</a></h4>
+       
+            <h4 class="product_name"><a href="product-details.html">{{productItem.supplier}}</a></h4>
+
+        <div class="price_box">
+            <span class="old_price">Rs. {{productItem.price}}</span>
+            <span class="current_price">{{productItem.priceWithDiscount}}</span>
+        </div>
+    </div>
+    <div class="add_to_cart">
+        <div *ngIf="this.isButtonVisible1">
+        <a title="Add to cart" type="button" (click)="handleAddToCart(productItem.product_name,productItem.imageURL1)">Add to cart</a>
+        </div>
+        <div *ngIf="this.isButtonVisible2">
+             <a title="Inquiy" type="button" (click)="handleAddToInquiry(productItem.product_name,productItem.imageURL1)" >Inquiry</a>
+        </div>
+       
+    </div>
+</div>
+</figure></article>

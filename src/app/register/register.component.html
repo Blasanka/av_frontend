@@ -1,0 +1,285 @@
+<app-header></app-header>
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li>My account</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- customer login start -->
+<div class="login_page_bg">
+  <div class="container">
+    <div class="customer_login">
+      <div class="row">
+        <!--login area start-->
+        <div class="col-md-9 offset-md-2">
+          <div class="account_form register">
+            <div class="row">
+              <div class="col-sm-9">
+                <h3>Create your AV Account</h3>
+              </div>
+              <div class="col-sm-3">
+                Already member?<a routerLink="/login" style="color: #049cb9;"
+                  >Login</a
+                >
+                here
+              </div>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="row">
+                    <div class="col-sm-9">
+                      <div class="form-group">
+                        <label for="registerMobileNumber"
+                          >Mobile number <span>*</span></label
+                        >
+                        <input
+                          required
+                          minlength="10"
+                          maxlength="10"
+                          ngModel
+                          name="registerMobileNumber"
+                          #registerMobileNumber="ngModel"
+                          (change)="log(registerMobileNumber)"
+                          type="text"
+                          class="form-control"
+                          id="registerMobileNumber"
+                          placeholder="Pleace enter your phone number"
+                        />
+                        <div
+                          class="alert alert-danger"
+                          *ngIf="
+                            registerMobileNumber.touched &&
+                            !registerMobileNumber.valid
+                          "
+                        >
+                          <div *ngIf="registerMobileNumber.errors.required">
+                            Mobile number is required
+                          </div>
+                          <div *ngIf="registerMobileNumber.errors.minlength">
+                            Mobile number length should be 10
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <label for="registerMobileNumber"
+                          >Get OTP <span>*</span></label
+                        >
+                      <div class="login_submit">
+                        <button type="submit">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="otpCode"
+                      >Verification Code <span>*</span></label
+                    >
+                    <input
+                      required
+                      minlength="4"
+                      maxlength="4"
+                      ngModel
+                      name="otpCode"
+                      #otpCode="ngModel"
+                      (change)="log(otpCode)"
+                      type="text"
+                      class="form-control"
+                      id="otpCode"
+                      placeholder="Pleace enter your verification number"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="otpCode.touched && !registerMobileNumber.valid"
+                    >
+                      <div *ngIf="otpCode.errors.required">
+                        OTP code is required
+                      </div>
+                      <div *ngIf="otpCode.errors.minlength">
+                        Length does not match
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="registerPassword"
+                      >Password <span>*</span></label
+                    >
+                    <input
+                      required
+                      minlength="5"
+                      maxlength="10"
+                      ngModel
+                      name="registerPassword"
+                      #registerPassword="ngModel"
+                      (change)="log(registerPassword)"
+                      type="text"
+                      class="form-control"
+                      id="registerPassword"
+                      placeholder="Pleace enter a password"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="
+                        registerPassword.touched && !registerPassword.valid
+                      "
+                    >
+                      <div *ngIf="registerPassword.errors.required">
+                        password is required
+                      </div>
+                      <div *ngIf="registerPassword.errors.minlength">
+                        Password minmum length should be 5
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="confermPassword"
+                      >Conferm Password <span>*</span></label
+                    >
+                    <input
+                      appConfirmEqualValidator="registerPassword"
+                      required
+                      minlength="5"
+                      maxlength="10"
+                      ngModel
+                      name="confermPassword"
+                      #confermPassword="ngModel"
+                      (change)="log(confermPassword)"
+                      type="text"
+                      class="form-control"
+                      id="confermPassword"
+                      placeholder="Conferm your password"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="confermPassword.touched && !confermPassword.valid"
+                    >
+                      <div *ngIf="confermPassword.errors.required">
+                        Yor password need to conferm
+                      </div>
+                      <div
+                        *ngIf="
+                          confermPassword.errors?.notEqual &&
+                          !confermPassword.errors.required
+                        "
+                      >
+                        Password and Conferm Password does not match
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label for="registerFullName"
+                      >Full name <span>*</span></label
+                    >
+                    <input
+                      required
+                      minlength="3"
+                      ngModel
+                      name="registerFullName"
+                      #registerFullName="ngModel"
+                      (change)="log(registerFullName)"
+                      type="text"
+                      class="form-control"
+                      id="registerFullName"
+                      placeholder="Pleace enter your full name"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="
+                        registerFullName.touched && !registerFullName.valid
+                      "
+                    >
+                      <div *ngIf="registerFullName.errors.required">
+                        Your name is required
+                      </div>
+                      <div *ngIf="registerFullName.errors.minlength">
+                        Minimum length length should be 3
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <label for="inputgender">Gender</label>
+                    <select id="registerGender" class="form-control" required>
+                      <option selected>Male</option>
+                      <option>Female</option>
+                    </select>
+                  </p>
+                  <div class="form-group">
+                    <label for="registerEmail">E-mail <span>*</span></label>
+                    <input
+                      required
+                      ngModel
+                      name="registerEmail"
+                      #registerEmail="ngModel"
+                      (change)="log(registerEmail)"
+                      type="text"
+                      class="form-control"
+                      id="registerEmail"
+                      placeholder="Pleace enter your email"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="registerEmail.touched && !registerEmail.valid"
+                    >
+                      <div *ngIf="registerEmail.errors.required">
+                        Your email is required
+                      </div>
+                      <div *ngIf="registerEmail.invalid">
+                        Your email is invalid
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="dateOfBirth">Date of birth <span>*</span></label>
+                    <input
+                      required
+                      ngModel
+                      name="dateOfBirth"
+                      #dateOfBirth="ngModel"
+                      (change)="log(dateOfBirth)"
+                      type="date"
+                      class="form-control"
+                      id="dateOfBirth"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="registerEmail.touched && !registerEmail.valid"
+                    >
+                      <div *ngIf="registerEmail.errors.required">
+                        Your birth date is required
+                      </div>
+                    </div>
+                  </div>
+                  <h6>
+                    By clicking "SIGN UP" I agree to
+                    <a routerLink="/privacypolicy" style="color: #049cb9;">Privacy Policy</a>
+                  </h6>
+                  <div class="login_submit">
+                    <button type="submit">SIGN UP</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--login area start-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- customer login end -->
+<app-footer></app-footer>

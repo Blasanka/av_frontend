@@ -1,0 +1,120 @@
+<app-header></app-header>
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li>My account</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- customer login start -->
+<div class="login_page_bg">
+  <div class="container">
+    <div class="customer_login">
+      <div class="row">
+        <!--login area start-->
+        <div class="col-md-6 offset-md-3">
+          <div class="account_form login">
+            <div class="row">
+            <div class="col-sm-8">
+              <h3>Welcome to AV! Please Login</h3>
+            </div>
+            <div class="col-sm-4">
+              New member?<a routerLink="/register" style="color: #049cb9;"
+                >Register</a
+              >
+              here
+            </div>
+          </div>
+            <form action="#">
+                <div class="form-group">
+                    <label for="loginMobileNumber"
+                      >Mobile number <span>*</span></label
+                    >
+                    <input
+                      required
+                      minlength="10"
+                      maxlength="10"
+                      ngModel
+                      name="loginMobileNumber"
+                      #loginMobileNumber="ngModel"
+                      
+                      type="text"
+                      class="form-control"
+                      id="loginMobileNumber"
+                      placeholder="Pleace enter your phone number"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="
+                      loginMobileNumber.touched &&
+                        !loginMobileNumber.valid
+                      "
+                    >
+                      <div *ngIf="loginMobileNumber.errors.required">
+                        Mobile number is required
+                      </div>
+                      <div *ngIf="loginMobileNumber.errors.minlength">
+                        Mobile number length should be 10
+                      </div>
+                    </div>
+                  </div>    
+                <div class="form-group">
+                    <label for="registerPassword"
+                      >Password <span>*</span></label
+                    >
+                    <input
+                      required
+                      minlength="5"
+                      maxlength="10"
+                      ngModel
+                      name="loginPassword"
+                      #loginPassword="ngModel"
+                      
+                      type="text"
+                      class="form-control"
+                      id="loginPassword"
+                      placeholder="Pleace enter a password"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="
+                      loginPassword.touched && !loginPassword.valid
+                      "
+                    >
+                      <div *ngIf="loginPassword.errors.required">
+                        password is required
+                      </div>
+                      <div *ngIf="loginPassword.errors.minlength">
+                        Password minmum length should be 5
+                      </div>
+                    </div>
+                  </div>
+              <div class="login_submit">
+                <a href="#">Lost your password?</a>
+                <label for="remember">
+                  <input id="remember" type="checkbox" />
+                  Remember me
+                </label>
+                <button type="submit">login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--login area start-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- customer login end -->
+<app-footer></app-footer>

@@ -1,0 +1,74 @@
+<app-header></app-header>
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>My account</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- my account start  -->
+<div class="account_page_bg">
+    <div class="container">
+        <section class="main_content_area">
+            <div class="account_dashboard">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <div class="dashboard_tab_button">
+                            <ul role="tablist" class="nav flex-column dashboard-list">
+                                <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
+                                <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
+                                <li> <a href="#orders" data-toggle="tab" class="nav-link">Payment Options</a></li>
+                                <li><a href="#downloads" data-toggle="tab" class="nav-link">Reviews</a></li>
+                                <li><a href="#address" data-toggle="tab" class="nav-link">Wishlist</a></li>
+                                <li><a href="login.html" class="nav-link">logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9" style="background-color:white">
+                        <!-- Tab panes -->
+                        <div class="tab-content dashboard_content" >
+                            <div class="tab-pane fade show active" id="dashboard">
+                                <h3>Dashboard </h3>
+                               
+                                <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
+                            </div>
+                            <div class="tab-pane fade" id="orders">
+                                <h3>Payment Options</h3>
+                                <div class="table-responsive">
+                                    <app-customer-account-payment-options></app-customer-account-payment-options>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="downloads">
+                                <h3>Reviews</h3>
+                                <div class="table-responsive">
+                                    <app-customer-account-reviews></app-customer-account-reviews>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address">
+                                <h4 class="billing-address">Wishlist</h4>
+                                    <app-customer-account-wishlist></app-customer-account-wishlist>
+                            </div>
+                            <div class="tab-pane fade" id="account-details">
+                                <h3>My Profile </h3>
+                                    <app-customer-account-account-details></app-customer-account-account-details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<app-footer></app-footer>

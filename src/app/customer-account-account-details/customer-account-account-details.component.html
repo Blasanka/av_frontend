@@ -1,0 +1,145 @@
+<div class="form-group">
+    <ng-container>
+       
+        </ng-container>
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            Full name <br>
+            {{name}}
+            <ng-container *ngIf="show">
+            <input
+            minlength="3"
+            ngModel
+            name="profileFullName"
+            #profileFullName="ngModel"
+           
+            type="text"
+            class="form-control"
+            id="profileFullName"
+            placeholder="Please enter your full name"
+            
+          />
+            </ng-container>
+          </div>
+          <div class="col-sm">
+            Email Address <br>
+            {{email}}
+            <ng-container *ngIf="show">
+                <input
+                ngModel
+                name="profileEmail"
+                #profileEmail="ngModel"
+               
+                type="text"
+                class="form-control"
+                id="profileEmail"
+                placeholder="Pleace enter your email"
+              />
+            </ng-container>
+          </div>
+          <div class="col-sm">
+            Mobile <br>
+            {{mobile}}
+            <ng-container *ngIf="show">
+                <input
+                minlength="10"
+                maxlength="10"
+                ngModel
+                name="profileMobileNumber"
+                #profileMobileNumber="ngModel"
+              
+                type="text"
+                class="form-control"
+                id="profileMobileNumber"
+                placeholder="Pleace enter your phone number"
+              />
+                </ng-container>
+          </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm">
+             Birthday <br>
+             {{birthday}}
+             <ng-container *ngIf="show">
+                <input
+                required
+                ngModel
+                name="birthOfDate"
+                #registerMobileNumber="ngModel"
+               
+                type="date"
+                class="form-control"
+                id="birthOfDate"
+              />
+                </ng-container>
+            </div>
+            <div class="col-sm">
+             Gender <br>
+             {{gender}}
+            </div>
+            <div class="col-sm">
+             
+            </div>
+          </div>
+          </div>
+         <br>
+            <a class="button"  (click)="toggle()" id="bt" style="margin-right: 20px;"> {{buttonName}}</a>
+            <a class="button"  (click) = "showk()">CHANGE PASSWORD</a>
+
+            <!--popup-->
+            
+    
+     <!-- Creates the bootstrap modal where the image will appear -->
+     <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+         </div>
+         <div class="modal-body">
+             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Old Password</label>
+                    <input type="password" formControlName="oldPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.oldPassword.errors }" />
+                    <div *ngIf="submitted && f.oldPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.oldPassword.errors.required">Password is required</div>
+                        <div *ngIf="f.oldPassword.errors.invalidPassword">Invalid password</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
+                    <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.newPassword.errors.required">Password is required</div>
+                        <div *ngIf="f.newPassword.errors.minlength">Password must be at least 6 characters</div>
+                        
+                    </div>
+                  </div>
+                 <div class="form-group">
+                     <label>Conferm Password</label>
+                     <input type="password" formControlName="confermPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confermPassword.errors }" />
+                     <div *ngIf="submitted && f.confermPassword.errors" class="invalid-feedback">
+                         <div *ngIf="f.confermPassword.errors.required">Password is required</div>
+                         <div *ngIf="f.confermPassword.errors.minlength">Password must be at least 6 characters</div>
+                     </div>
+                   
+                   </div>
+               <div class="form-group form-check">
+                 <label class="form-check-label">
+                   <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                 </label>
+               </div>
+               <button type="submit" class="btn btn-primary" (click)="passwordChange()" >Submit</button>
+             </form>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
+         
+         </div>
+       </div>
+     </div>
+      </div>
+
+
