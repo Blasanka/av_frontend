@@ -41,13 +41,10 @@ export class ShoppingCartComponent implements OnInit {
             productId:   product.id,
             productName: product.product_name,
             quantity: 1,
-            imageURL1:product.imageURL1,
-            imageURL2:product.imageURL2,
+            attachment:product.attachment,
             price: product.price
             })
     }
-  
-  
 
     // if(this.cartItems.length ===0){
     //   this.cartItems.push({

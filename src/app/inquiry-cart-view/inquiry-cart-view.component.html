@@ -39,15 +39,13 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                    
                                        <tr *ngFor = "let f of cartData">              
-                                           <td class="product_remove"><a (click)="removeData(f.productId,f.imageURL1,f.productName)"><i class="fa fa-trash-o"></i></a></td>
-                                           <td class="product_thumb"><a [routerLink]="['/productdetail',f.productId]"><img  [src]="f.imageURL1" alt=""></a></td>
-                                           <td class="product_name"><a href="#">{{f.productName}}</a></td>
+                                           <td class="product_remove"><a (click)="removeData(f.productId,f.attachment,f.product_name)"><i class="fa fa-trash-o"></i></a></td>
+                                           <td class="product_thumb"><a [routerLink]="['/productdetail',f.productId]"><img  [src]="f.attachment" alt=""></a></td>
+                                           <td class="product_name"><a href="#">{{f.product_name}}</a></td>
                                            <td class="product-price">{{f.price}}</td>
                                            <td class="product_quantity"><label>Quantity</label> <input  min="1" max="100" [value]="f.quantity" type="number" id="quantityid"></td>
-                                           <td class="product_total">{{f.price * f.quantity}}</td>
-                                       
+                                           <td class="product_total">{{f.price*f.quantity}}</td>
                                        </tr>
                                    </tbody>
                                </table>

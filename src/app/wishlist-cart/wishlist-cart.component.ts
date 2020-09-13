@@ -45,7 +45,7 @@ export class WishlistCartComponent implements OnInit {
       Swal.fire({
         title: 'One Item Added To Wishlist',
         icon: 'success',
-        imageUrl: product.imageURL1,
+        imageUrl: product.attachment,
         imageWidth: 200,
         imageHeight: 200,
         text: product.product_name,
@@ -55,14 +55,10 @@ export class WishlistCartComponent implements OnInit {
             productId:   product.id,
             product_name: product.product_name,
             quantity: 1,
-            imageURL1:product.imageURL1,
-            imageURL2:product.imageURL2,
+            imageUrl:product.attachment,
             price: product.price
-            })
-          
+            });
     }
-  
-  
 
     // if(this.cartItems.length ===0){
     //   this.cartItems.push({

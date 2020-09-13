@@ -2,12 +2,20 @@
 <figure>
 <div class="product_thumb">
     <div *ngIf="this.isButtonVisible1">
-    <a class="primary_img" [routerLink]="['/productdetail',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
-    <a class="secondary_img" [routerLink]="['/productdetail',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    <a class="primary_img" [routerLink]="['/productdetail',productItem.id]">
+        <img src={{productItem.attachment}} alt={{productItem.product_name}}>
+    </a>
+    <a class="secondary_img" [routerLink]="['/productdetail',productItem.id]">
+        <img src={{productItem.attachment}} alt={{productItem.product_name}}>
+    </a>
     </div>
     <div *ngIf="this.isButtonVisible2">
-    <a class="primary_img" [routerLink]="['/directinquiry',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
-    <a class="secondary_img" [routerLink]="['/directinquiry',productItem.id]"><img src={{productItem.attachment}} alt="" width="200px" height="200"></a>
+    <a class="primary_img" [routerLink]="['/directinquiry',productItem.id]">
+        <img src={{productItem.attachment}} alt={{productItem.product_name}}>
+    </a>
+    <a class="secondary_img" [routerLink]="['/directinquiry',productItem.id]">
+        <img src={{productItem.attachment}} alt={{productItem.product_name}}>
+    </a>
     </div>
     <div class="label_product">
         <span class="label_sale">Sale</span>

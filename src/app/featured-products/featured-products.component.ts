@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../service/product.service'
+import { ProductService } from '../service/product.service';
 import { Product } from '../models/product';
 @Component({
   selector: 'app-featured-products',
@@ -9,14 +9,19 @@ import { Product } from '../models/product';
 export class FeaturedProductsComponent implements OnInit {
 
   products: Product[] = [];
+  isLoading: boolean;
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.getProducts();
   }
 
   getProducts(): void {
     this.productService.getProducts()
-      .subscribe((products: any) => this.products = products.data);
+      .subscribe((products: any) => {
+        this.products = products.data;
+        this.isLoading = false;
+      });
   }
 }

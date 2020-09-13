@@ -21,8 +21,7 @@
 // }
 export interface Product {
     id: number;
-    imageURL1: string;
-    imageURL2: string;
+    attachment: string;
     product_name: string;
     description: string;
     price: number;
