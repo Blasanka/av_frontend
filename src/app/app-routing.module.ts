@@ -11,27 +11,20 @@ import { ShopComponent } from './shop/shop.component';
 
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.component';
-import { InquiryCartComponent } from './inquiry-cart/inquiry-cart.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
 
 const routes: Routes = [
-  {path: "login", component: LoginComponent},
-  {path: "", component: HomeComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "customeraccount", component: CustomerAccountComponent},
-  {path: "privacypolicy", component: PrivacyPolicyComponent},
-  {path: "cart", component: CartComponent},
-  {path: "checkout", component: CheckoutComponent},
-  {path: "shop", component: ShopComponent},
-  {path: "inquirycart", component: InquiryCartViewComponent},
-
-
-  {path: "productdetail/:id", component: ProductDetailComponent},
-  {path: "directinquiry/:id", component: DirectInquiryComponent},
-
-
-
-
+  {path: 'login', component: LoginComponent},
+  {path: '', component: HomeComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'customeraccount', component: CustomerAccountComponent},
+  {path: 'privacypolicy', component: PrivacyPolicyComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'checkout', component: CheckoutComponent},
+  {path: 'shop', component: ShopComponent},
+  {path: 'inquirycart', component: InquiryCartViewComponent},
+  {path: 'productdetail/:id', component: ProductDetailComponent},
+  {path: 'directinquiry/:id', component: DirectInquiryComponent},
 ];
 
 @NgModule({
@@ -43,11 +36,11 @@ export const routingComponents = [
   LoginComponent,
   HomeComponent,
   RegisterComponent,
-  CustomerAccountComponent, 
-  PrivacyPolicyComponent, 
-  CartComponent, 
-  CheckoutComponent, 
-  ShopComponent, 
+  CustomerAccountComponent,
+  PrivacyPolicyComponent,
+  CartComponent,
+  CheckoutComponent,
+  ShopComponent,
   ProductDetailComponent,
   DirectInquiryComponent,
   InquiryCartViewComponent

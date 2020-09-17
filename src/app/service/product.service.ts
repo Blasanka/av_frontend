@@ -90,6 +90,19 @@ export class ProductService {
   getFeaturedProducts() {
 
   }
+
+  getProduct(id): Observable<Product> {
+    let headers = new HttpHeaders();
+    headers = this.getHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+    return this.http.get<Product>(`${this.BASE_URL}/products/${id}`, { headers })
+      .pipe(
+        tap(_ => console.log('fetched products')),
+        catchError(this.handleError<Product>('getProducts', null))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

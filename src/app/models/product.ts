@@ -20,6 +20,8 @@
 //     }
 // }
 export interface Product {
+    imageURL1: string;
+    imageURL2: any;
     id: number;
     attachment: string;
     product_name: string;

@@ -104,7 +104,7 @@ export class InquiryCartComponent implements OnInit {
    }
 
    whenUpdateQty(qty: number, total: number) {
-      this.productTotal = total*qty;
+      this.productTotal = total * qty;
    }
 
  }

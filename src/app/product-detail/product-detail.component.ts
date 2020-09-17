@@ -1,10 +1,10 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessangerService } from '../service/messanger.service';
-import { Product } from '../models/product'
+import { Product } from '../models/product';
 import {NotificationsService} from 'angular2-notifications';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -12,26 +12,36 @@ import Swal from 'sweetalert2'
 })
 export class ProductDetailComponent implements OnInit {
 
-  
+
   oneProduct: any = {};
   productList: Product[] = [];
   productItem: any;
   quantity: any ;
-  q:any;
-  constructor(private productService: ProductService, private route: ActivatedRoute,private msg: MessangerService,private service: NotificationsService) { }
+  q: any;
+  id: any;
+
+  constructor(private productService: ProductService, private route: ActivatedRoute,
+              private msg: MessangerService, private service: NotificationsService) { }
 
   ngOnInit() {
     // this.productList = this.productService.getProducts()
-    
+
     // let id = this.route.snapshot.params['id']
     // // this.oneProduct = this.productService.getProduct(id)
     // // console.log(Number(id));
     // this.q = this.productService.getProducts();
     // this.oneProduct = this.q.find(item => item.id === Number(id));
     // console.log(this.oneProduct);
+
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      });
+    this.productService.getProduct(this.id).subscribe((res: any) => {
+      this.oneProduct = res.data;
+    });
   }
 
-  handleAddToCart(image,name){
+  handleAddToCart(image, name) {
     this.msg.sendMsg(this.oneProduct);
     Swal.fire({
       title: 'One Item Added',
@@ -41,6 +51,6 @@ export class ProductDetailComponent implements OnInit {
       imageHeight: 200,
       text: name,
       footer: '<a href="/cart">View Cart</a>'
-    })
+    });
     }
 }

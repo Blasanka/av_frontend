@@ -24,14 +24,14 @@ export class HeaderComponent implements OnInit {
     let menuclass = document.getElementsByClassName('categories_menu_toggle')[0];
     menuclass.classList.add("hide_main_menu"); 
 
-    this.interval = setInterval(() => { 
+    this.interval = setInterval(() => {
       this.cartData = this.getData();
 
-      this.totalcartValue = JSON.parse(localStorage.getItem('CartTotal'));
-      this.WishlistQuantity = JSON.parse(localStorage.getItem('WishlistQuantity'));
-      this.SupplierName = JSON.parse(localStorage.getItem('SupplierName'));
-      this.InquryQuantity = JSON.parse(localStorage.getItem('InquiryQuantity'));
-      this.quantity = JSON.parse(localStorage.getItem('quantity'));
+      this.totalcartValue = localStorage.getItem('CartTotal');
+      this.WishlistQuantity = localStorage.getItem('WishlistQuantity');
+      this.SupplierName = localStorage.getItem('SupplierName');
+      this.InquryQuantity = localStorage.getItem('InquiryQuantity');
+      this.quantity = localStorage.getItem('quantity');
     }, 5000);
   }
 

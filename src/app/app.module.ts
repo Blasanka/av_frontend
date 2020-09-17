@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './template/header/header.component';
@@ -25,12 +25,14 @@ import { ItemComponent } from './item/item.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CartItemComponent } from './shopping-cart/cart-item/cart-item.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import {SimpleNotificationsModule } from 'angular2-notifications'
+import {SimpleNotificationsModule } from 'angular2-notifications';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { WishlistCartComponent } from './wishlist-cart/wishlist-cart.component';
 import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.component';
 import { InquiryCartComponent } from './inquiry-cart/inquiry-cart.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
+import { OwlModule } from 'ngx-owl-carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,6 @@ import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.
     DirectInquiryComponent,
     InquiryCartComponent,
     InquiryCartViewComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -68,6 +69,7 @@ import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
+    OwlModule
   ],
   providers: [CartItemsService],
   bootstrap: [AppComponent]
