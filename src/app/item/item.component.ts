@@ -14,9 +14,10 @@ export class ItemComponent implements OnInit {
   private isButtonVisible1 = true;
   private isButtonVisible2 = false;
   featuredProductCat1: any;
-  @Input() productItem: Product
-  constructor(private msg: MessangerService,private msgw: MessangerWishlistService,private msgi: MessangerInquiryService) {
-   }
+  @Input() productItem: Product;
+  constructor(private msg: MessangerService, private msgw: MessangerWishlistService, 
+    private msgi: MessangerInquiryService) {
+  }
 
   ngOnInit() {
     this.displayButton();
@@ -32,7 +33,7 @@ export class ItemComponent implements OnInit {
       imageHeight: 200,
       text: name,
       footer: '<a href="/cart">View Cart</a>'
-    })
+    });
   }
 
   handleAddToWishlist(){
@@ -43,13 +44,13 @@ export class ItemComponent implements OnInit {
   }
 
   displayButton(){
-    if(this.productItem.supplier == 'AV'){
+    if(this.productItem.supplier === 'AV'){
        this.isButtonVisible1 = true;
        this.isButtonVisible2 = false;
     }
-    if(this.productItem.supplier != 'AV'){
+    if(this.productItem.supplier !== 'AV'){
       this.isButtonVisible1 = false;
-     this.isButtonVisible2 = true;
+      this.isButtonVisible2 = true;
     }
   }
 }

@@ -1,0 +1,11 @@
+.owl-thumb {    
+  width: 150px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  padding: 5px;
+  border: 1px solid grey;
+  margin-right: 10px;
+  background-color: red;
+}

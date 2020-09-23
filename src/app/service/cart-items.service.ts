@@ -7,22 +7,22 @@ export class CartItemsService {
 
   constructor() { }
 
-  addItem(cartItem){
+  addItem(cartItem) {
     let cartItems = [];
-      if(localStorage.getItem('Items')){
+    if (localStorage.getItem('Items')) {
         cartItems = JSON.parse(localStorage.getItem('Items'));
         cartItems = [cartItem, ...cartItems];
       } else {
         cartItems = [cartItem];
       }
-    localStorage.setItem('Items',JSON.stringify(cartItems));
+    localStorage.setItem('Items', JSON.stringify(cartItems));
     }
 
-  getItemFromClass(){
+  getItemFromClass() {
     return JSON.parse(localStorage.getItem('Items'));
   }
 
-  updateCartCount(){
+  updateCartCount() {
     return JSON.parse(localStorage.getItem('Items'));
   }
 

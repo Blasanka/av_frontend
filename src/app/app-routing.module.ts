@@ -23,8 +23,8 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'inquirycart', component: InquiryCartViewComponent},
-  {path: 'productdetail/:id', component: ProductDetailComponent},
-  {path: 'directinquiry/:id', component: DirectInquiryComponent},
+  {path: 'product/details/:id', component: ProductDetailComponent},
+  {path: 'product/inquiry/:id', component: DirectInquiryComponent},
 ];
 
 @NgModule({

@@ -10,11 +10,11 @@ export class MessangerInquiryService {
 
   sendMsgInquiry(product){
     // console.log(product);
-  this.subject.next(product) //Triggering an event
+    this.subject.next(product); // Triggering an event
   }
 
   getMsgInquiry(){
-  return this.subject.asObservable();
+   return this.subject.asObservable();
   }
 
 }

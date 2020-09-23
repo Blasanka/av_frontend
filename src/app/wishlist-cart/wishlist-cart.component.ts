@@ -30,7 +30,7 @@ export class WishlistCartComponent implements OnInit {
   addProductToCart(product: Product){
     let productExists = false
     for(let i in this.cartItems){
-          if(this.cartItems[i].productId == product.id){
+          if(this.cartItems[i].id == product.id){
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
@@ -52,7 +52,7 @@ export class WishlistCartComponent implements OnInit {
         footer: '<a href="/cart">View Wishlist</a>'
       })
       this.cartItems.push({
-            productId:   product.id,
+            id:   product.id,
             product_name: product.product_name,
             quantity: 1,
             imageUrl:product.attachment,
@@ -60,35 +60,6 @@ export class WishlistCartComponent implements OnInit {
             });
     }
 
-    // if(this.cartItems.length ===0){
-    //   this.cartItems.push({
-    //     productId:   product.id,
-    //     product_name: product.product_name,
-    //     quantity: 1,
-    //     price: product.price
-    //     })
-    // }else{
-    //   for(let i in this.cartItems){
-    //     if(this.cartItems[i].productId == product.id){
-    //       this.cartItems[i].quantity++
-    //     }else{
-     
-  
-    //   this.cartItems.push({
-    //     productId:   product.id,
-    //     product_name: product.product_name,
-    //     quantity: 1,
-    //     price: product.price
-    //     })
-    //   }
-    //   }
-    // }
-
-    // this.cartTotal = 0;
-    // this.cartItems.forEach(item => {
-    //   this.cartTotal += (item.quantity * item.price);
-    
-    // })
     localStorage.setItem('WishlistItems',JSON.stringify(this.cartItems));
     // localStorage.setItem('WishlistTotal',JSON.stringify(this.cartTotal));
     localStorage.setItem('WishlistQuantity',JSON.stringify(this.cartItems.length));

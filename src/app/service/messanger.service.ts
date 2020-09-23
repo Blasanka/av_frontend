@@ -5,16 +5,16 @@ import {Subject } from 'rxjs';
 })
 export class MessangerService {
 
-  subject = new Subject()
+  subject = new Subject();
   constructor() { }
 
-  sendMsg(product){
+  sendMsg(product) {
     // console.log(product);
-  this.subject.next(product) //Triggering an event
+    this.subject.next(product); // Triggering an event
   }
 
-  getMsg(){
-  return this.subject.asObservable();
+  getMsg() {
+    return this.subject.asObservable();
   }
 
 }

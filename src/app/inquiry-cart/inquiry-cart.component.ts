@@ -33,7 +33,7 @@ export class InquiryCartComponent implements OnInit {
    addProductToCart(product: Product) {
      let productExists = false;
      for (const i in this.cartItems) {
-           if (this.cartItems[i].productId === product.id) {
+           if (this.cartItems[i].id === product.id) {
              Swal.fire({
                icon: 'error',
                title: 'Oops...',
@@ -56,7 +56,7 @@ export class InquiryCartComponent implements OnInit {
           footer: '<a href="/inquirycart">View Inquiry</a>'
         });
         this.cartItems.push({
-              productId:   product.id,
+              id:   product.id,
               product_name: product.product_name,
               quantity: 1,
               imageUrl: product.attachment,
@@ -77,7 +77,7 @@ export class InquiryCartComponent implements OnInit {
               footer: '<a href="/inquirycart">View Inquiry</a>'
             });
             this.cartItems.push({
-                productId:   product.id,
+                id:   product.id,
                 product_name: product.product_name,
                 quantity: 1,
                 attachment: product.attachment,

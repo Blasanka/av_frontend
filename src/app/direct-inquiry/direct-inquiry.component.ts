@@ -15,27 +15,20 @@ export class DirectInquiryComponent implements OnInit {
 
   id: any;
   oneProduct: any = {};
-  productList: Product[] = [];
-  productItem: any;
   quantity: any ;
   q: any;
+  isLoading: boolean;
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private msgi: MessangerInquiryService, private service: NotificationsService) { }
 
   ngOnInit() {
-    // this.productList = this.productService.getProducts()
-
-    // let id = this.route.snapshot.params['id']
-    // // this.oneProduct = this.productService.getProduct(id)
-    // // console.log(Number(id));
-    // this.q = this.productService.getProducts();
-    // this.oneProduct = this.q.find(item => item.id === Number(id));
-
+    this.isLoading = true;
     this.route.params.subscribe(params => {
       this.id = params.id;
       });
     this.productService.getProduct(this.id).subscribe((res: any) => {
       this.oneProduct = res.data;
+      this.isLoading = false;
     });
   }
 

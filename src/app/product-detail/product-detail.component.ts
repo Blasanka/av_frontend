@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessangerService } from '../service/messanger.service';
-import { Product } from '../models/product';
 import {NotificationsService} from 'angular2-notifications';
 import Swal from 'sweetalert2';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -14,30 +14,47 @@ export class ProductDetailComponent implements OnInit {
 
 
   oneProduct: any = {};
-  productList: Product[] = [];
-  productItem: any;
   quantity: any ;
   q: any;
   id: any;
+  isLoading: boolean;
+
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 2
+      },
+      400: {
+        items: 3
+      },
+      740: {
+        items: 4
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: false
+  };
 
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private msg: MessangerService, private service: NotificationsService) { }
 
   ngOnInit() {
-    // this.productList = this.productService.getProducts()
-
-    // let id = this.route.snapshot.params['id']
-    // // this.oneProduct = this.productService.getProduct(id)
-    // // console.log(Number(id));
-    // this.q = this.productService.getProducts();
-    // this.oneProduct = this.q.find(item => item.id === Number(id));
-    // console.log(this.oneProduct);
-
+    this.isLoading = true;
     this.route.params.subscribe(params => {
       this.id = params.id;
       });
     this.productService.getProduct(this.id).subscribe((res: any) => {
       this.oneProduct = res.data;
+      this.isLoading = false;
     });
   }
 
@@ -52,5 +69,5 @@ export class ProductDetailComponent implements OnInit {
       text: name,
       footer: '<a href="/cart">View Cart</a>'
     });
-    }
+  }
 }

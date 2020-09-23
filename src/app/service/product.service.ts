@@ -81,12 +81,6 @@ export class ProductService {
       );
   }
 
-  // getProduct(productID){
-  //   let arr = this.products;
-  //   return this.products[productID];
-    
-  // }
-
   getFeaturedProducts() {
 
   }

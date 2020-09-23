@@ -31,7 +31,7 @@ import { WishlistCartComponent } from './wishlist-cart/wishlist-cart.component';
 import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.component';
 import { InquiryCartComponent } from './inquiry-cart/inquiry-cart.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
-import { OwlModule } from 'ngx-owl-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,6 @@ import { OwlModule } from 'ngx-owl-carousel';
     CheckoutComponent,
     ShopComponent,
     FeaturedProductsComponent,
-   
     ItemComponent,
     ShoppingCartComponent,
     CartItemComponent,
@@ -69,7 +68,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    OwlModule
+    CarouselModule,
   ],
   providers: [CartItemsService],
   bootstrap: [AppComponent]
