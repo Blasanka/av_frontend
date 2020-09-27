@@ -64,8 +64,8 @@
                                         <tbody>
                                          
                                             <tr *ngFor = "let f of cartData">              
-                                                <td class="product_remove"><a (click)="removeData(f.id, f.attachment[0], f.product_name)"><i class="fa fa-trash-o"></i></a></td>
-                                                <td class="product_thumb"><a [routerLink]="['/product/details', f.id]"><img  [src]="f.attachment[0]" alt=""></a></td>
+                                                <td class="product_remove"><a (click)="removeData(f.id, f.imageUrl[0], f.product_name)"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="product_thumb"><a [routerLink]="['/product/details', f.id]"><img  [src]="'http://127.0.0.1:8000/storage/'+f.imageUrl[0]" alt=""></a></td>
                                                 <td class="product_name"><a href="#">{{f.product_name}}</a></td>
                                                 <td class="product-price">{{f.price | currency: 'Rs. '}}</td>
                                                 <td class="product_total">{{(f.price * f.quantity) | currency: 'Rs. '}}</td>

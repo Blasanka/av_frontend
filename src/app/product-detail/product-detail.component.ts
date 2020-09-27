@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 2
+        items: 0
       },
       400: {
         items: 3
@@ -63,7 +63,7 @@ export class ProductDetailComponent implements OnInit {
     Swal.fire({
       title: 'One Item Added',
       icon: 'success',
-      imageUrl: image,
+      imageUrl: `http://127.0.0.1:8000/storage/${image}`,
       imageWidth: 200,
       imageHeight: 200,
       text: name,

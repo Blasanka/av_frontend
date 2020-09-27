@@ -26,18 +26,19 @@
                             <div *ngIf="!isLoading" class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
-                                        <img id="zoom1" [src]="oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
+                                        <img id="zoom1" [src]="'http://127.0.0.1:8000/storage/'+oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
                                     </a>
                                 </div>
-                                <div class="single-zoom-thumb">
-                                    <owl-carousel-o class="s-tab-zoom single-product-active" [options]="customOptions">
-                                        <ng-template *ngFor="let img of oneProduct.attachment" carouselSlide>
-                                            <a href="#" class="elevatezoom-gallery" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
-                                                <img class=".owl-thumb" *ngIf="oneProduct.attachment.indexOf(img) > 0" [src]="img" [alt]="oneProduct.product_name">
-                                            </a>
-                                        </ng-template>
-                                    </owl-carousel-o>
-                                </div>
+                                <owl-carousel-o [options]="customOptions">
+                                    <ng-template *ngFor="let img of oneProduct.attachment | slice:1" carouselSlide>
+                                        <!-- elevatezoom-gallery -->
+                                        <a href="#" class="owl-link" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
+                                            <div class="px-1">
+                                                <img class="owl-thumb" [src]="'http://127.0.0.1:8000/storage/'+img" [alt]="oneProduct.product_name">
+                                            </div>
+                                        </a>
+                                    </ng-template>
+                                </owl-carousel-o>
                             </div>
                             <div *ngIf="isLoading" class="product-details-tab d-flex justify-content-center">
                                 <div class="spinner-border text-danger m-5" role="status">

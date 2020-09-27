@@ -26,18 +26,19 @@
                         <div *ngIf="!isLoading" class="product-details-tab">
                             <div id="img-1" class="zoomWrapper single-zoom">
                                 <a href="#">
-                                    <img id="zoom1" [src]="oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
+                                    <img id="zoom1" [src]="'http://127.0.0.1:8000/storage/'+oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
                                 </a>
                             </div>
-                            <div class="single-zoom-thumb">
-                                <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                                    <li *ngFor="let img of oneProduct.attachment">
-                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
-                                            <img *ngIf="oneProduct.attachment.indexOf(i) > 0" [src]="img" [alt]="oneProduct.product_name">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <owl-carousel-o [options]="customOptions">
+                                <ng-template *ngFor="let img of oneProduct.attachment | slice:1" carouselSlide>
+                                    <!-- elevatezoom-gallery -->
+                                    <a href="#" class="owl-link" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
+                                        <div class="px-1">
+                                            <img class="owl-thumb" [src]="'http://127.0.0.1:8000/storage/'+img" [alt]="oneProduct.product_name">
+                                        </div>
+                                    </a>
+                                </ng-template>
+                            </owl-carousel-o>
                         </div>
                         <div *ngIf="isLoading" class="product-details-tab d-flex justify-content-center">
                             <div class="spinner-border text-danger m-5" role="status">
@@ -57,7 +58,7 @@
                                 <div class="product_variant quantity">
                                     <label>quantity</label>
                                     <label>{{quantity}}</label>
-                                    <button class="button" type="submit"  (click)="handleAddToCart(oneProduct.attachment[0], oneProduct.product_name)">add to inquiry</button>
+                                    <button class="button" type="submit"  (click)="handleAddToCart(oneProduct.attachment, oneProduct.product_name)">add to inquiry</button>
                                     <button class="button" type="submit"  >Contact Dealer</button>
                                 </div>
                                 <div class="product_meta">

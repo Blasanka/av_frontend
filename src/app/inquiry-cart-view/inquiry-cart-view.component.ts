@@ -39,7 +39,7 @@ export class InquiryCartViewComponent implements OnInit {
   }
 
 getData() {
-return JSON.parse(localStorage.getItem('InquiryItems'));
+  return JSON.parse(localStorage.getItem('InquiryItems'));
 
 }
 
@@ -47,11 +47,11 @@ calculateProductTotal() {
   const productTotal = (JSON.parse(localStorage.getItem('InquiryItems')).quantity) * (JSON.parse(localStorage.getItem('InquiryItems')).itemPrice);
 }
 
-removeData(id, image, name) {
+removeData(prod, image, name) {
 
   Swal.fire({
     title: 'Are you sure want to remove ' + name,
-    imageUrl: image,
+    imageUrl: 'http://127.0.0.1:8000/storage/' + image[0],
     imageWidth: 200,
     imageHeight: 200,
     text: 'You won\'t be able to revert this!',
@@ -62,11 +62,10 @@ removeData(id, image, name) {
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if (result.value) {
-      for (let i = 0; i < this.cartData.length; i++) {
-        if (this.cartData[i].id === id) {
-          this.cartData.splice(i, 1);
-          console.log('Item removed!');
-        }
+      const index = this.cartData.indexOf(prod, 0);
+      if (index > -1) {
+        this.cartData.splice(index, 1);
+        this.updateCart();
       }
       Swal.fire(
         'Deleted!',

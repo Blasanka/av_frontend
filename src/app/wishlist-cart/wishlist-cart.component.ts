@@ -45,7 +45,7 @@ export class WishlistCartComponent implements OnInit {
       Swal.fire({
         title: 'One Item Added To Wishlist',
         icon: 'success',
-        imageUrl: product.attachment,
+        imageUrl: 'http://127.0.0.1:8000/storage/' + product.attachment[0],
         imageWidth: 200,
         imageHeight: 200,
         text: product.product_name,

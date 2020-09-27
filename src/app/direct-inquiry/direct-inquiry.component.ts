@@ -37,7 +37,7 @@ export class DirectInquiryComponent implements OnInit {
     Swal.fire({
       title: 'One Item Added',
       icon: 'success',
-      imageUrl: image,
+      imageUrl: 'http://127.0.0.1:8000/storage/' + image[0],
       imageWidth: 200,
       imageHeight: 200,
       text: name,

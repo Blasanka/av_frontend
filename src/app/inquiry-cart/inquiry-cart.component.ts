@@ -49,7 +49,7 @@ export class InquiryCartComponent implements OnInit {
         Swal.fire({
           title: 'One Item Added To Inquiry',
           icon: 'success',
-          imageUrl: product.attachment,
+          imageUrl: `http://127.0.0.1:8000/storage/${product.attachment[0]}`,
           imageWidth: 200,
           imageHeight: 200,
           text: product.product_name,
@@ -70,7 +70,7 @@ export class InquiryCartComponent implements OnInit {
             Swal.fire({
               title: 'One Item Added To Inquiry',
               icon: 'success',
-              imageUrl: product.attachment,
+              imageUrl: 'http://127.0.0.1:8000/storage/' + product.attachment[0],
               imageWidth: 200,
               imageHeight: 200,
               text: product.product_name,
@@ -89,7 +89,7 @@ export class InquiryCartComponent implements OnInit {
             title: 'Faield To Add Product',
             icon: 'error',
             text: 'You can only add one supplier\'s products at one time.Pleace finish the deal or clear the inquiry to add this product',
-            imageUrl: product.attachment,
+            imageUrl: `http://127.0.0.1:8000/storage/${product.attachment[0]}`,
             imageWidth: 200,
             imageHeight: 200,
             footer: '<a href="/inquirycart">View Inquiry</a>'

@@ -73,7 +73,7 @@ export class CartComponent implements OnInit {
 
     Swal.fire({
       title: 'Are you sure want to remove ' + name,
-      imageUrl: attachment,
+      imageUrl: 'http://127.0.0.1:8000/storage/' + attachment[0],
       imageWidth: 200,
       imageHeight: 200,
       text: 'You won\'t be able to revert this!',
