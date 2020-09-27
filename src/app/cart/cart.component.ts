@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Cart } from '../models/cart';
 import { CartItem } from '../models/CartItem';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -16,10 +17,12 @@ export class CartComponent implements OnInit {
   totalValue: any;
   flatRate: any = 0;
   cart: Cart;
+  resourcesBaseUrl: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.cart = new Cart(1, [], 0, 0, 0);
     this.getCartItems().forEach( (element) => {
       const itemTotal = element.quantity * element.price;
@@ -73,7 +76,7 @@ export class CartComponent implements OnInit {
 
     Swal.fire({
       title: 'Are you sure want to remove ' + name,
-      imageUrl: 'http://127.0.0.1:8000/storage/' + attachment[0],
+      imageUrl: this.resourcesBaseUrl + attachment[0],
       imageWidth: 200,
       imageHeight: 200,
       text: 'You won\'t be able to revert this!',

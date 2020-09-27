@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { isNull } from 'util';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-customer-account-wishlist',
@@ -15,10 +16,12 @@ export class CustomerAccountWishlistComponent implements OnInit {
   cartTotal: any;
   flatRate: any = 0;
   shoppingCart = [];
+  resourcesBaseUrl: string;
+
   constructor() { }
 
   ngOnInit(): void {
-
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     if (!isNull(JSON.parse(localStorage.getItem('Items')))) {
       this.shoppingCart = [] = JSON.parse(localStorage.getItem('Items'));
     }
@@ -56,7 +59,7 @@ removeData(id, image, name) {
 
   Swal.fire({
     title: 'Are you sure want to remove ' + name,
-    imageUrl: 'http://127.0.0.1:8000/storage/' + image[0],
+    imageUrl: this.resourcesBaseUrl + image[0],
     imageWidth: 200,
     imageHeight: 200,
     text: 'You won\'t be able to revert this!',
@@ -128,7 +131,7 @@ removeData(id, image, name) {
       Swal.fire({
         title: 'One Item Added To cart',
         icon: 'success',
-        imageUrl: 'http://127.0.0.1:8000/storage/' + f.attachment[0],
+        imageUrl: this.resourcesBaseUrl + f.attachment[0],
         imageWidth: 200,
         imageHeight: 200,
         text: f.product_name,

@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { CartItemsService } from '../service/cart-items.service';
 import { isNull } from 'util';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inquiry-cart',
@@ -12,14 +13,15 @@ import Swal from 'sweetalert2';
 })
 export class InquiryCartComponent implements OnInit {
 
-   // cartItems = []=JSON.parse(localStorage.getItem('Items'));
    cartItems = [];
    supplier: any;
    productTotal: number;
+   resourcesBaseUrl: string;
 
    constructor(private msgi: MessangerInquiryService, private cartItemService: CartItemsService) { }
 
    ngOnInit() {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
 
      if (!isNull(JSON.parse(localStorage.getItem('InquiryItems')))) {
        this.cartItems = [] = JSON.parse(localStorage.getItem('InquiryItems'));
@@ -70,7 +72,7 @@ export class InquiryCartComponent implements OnInit {
             Swal.fire({
               title: 'One Item Added To Inquiry',
               icon: 'success',
-              imageUrl: 'http://127.0.0.1:8000/storage/' + product.attachment[0],
+              imageUrl: this.resourcesBaseUrl + product.attachment[0],
               imageWidth: 200,
               imageHeight: 200,
               text: product.product_name,

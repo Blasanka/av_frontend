@@ -26,7 +26,7 @@
                         <div *ngIf="!isLoading" class="product-details-tab">
                             <div id="img-1" class="zoomWrapper single-zoom">
                                 <a href="#">
-                                    <img id="zoom1" [src]="'http://127.0.0.1:8000/storage/'+oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
+                                    <img id="zoom1" [src]="resourcesBaseUrl+oneProduct.attachment[0]" data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
                                 </a>
                             </div>
                             <owl-carousel-o [options]="customOptions">
@@ -34,7 +34,7 @@
                                     <!-- elevatezoom-gallery -->
                                     <a href="#" class="owl-link" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
                                         <div class="px-1">
-                                            <img class="owl-thumb" [src]="'http://127.0.0.1:8000/storage/'+img" [alt]="oneProduct.product_name">
+                                            <img class="owl-thumb" [src]="resourcesBaseUrl+img" [alt]="oneProduct.product_name">
                                         </div>
                                     </a>
                                 </ng-template>

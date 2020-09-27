@@ -3,18 +3,18 @@
 <div class="product_thumb">
     <div *ngIf="this.isButtonVisible1">
     <a class="primary_img" [routerLink]="['/product/details',productItem.id]">
-        <img src="'http://127.0.0.1:8000/storage/'+productItem.attachment[0]" alt={{productItem.product_name}}>
+        <img src="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}}>
     </a>
     <a class="secondary_img" [routerLink]="['/product/details',productItem.id]">
-        <img src="'http://127.0.0.1:8000/storage/'+productItem.attachment[1]" alt={{productItem.product_name}}>
+        <img src="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}}>
     </a>
     </div>
-    <div *ngIf="this.isButtonVisible2">
+    <div *ngIf="isButtonVisible2">
     <a class="primary_img" [routerLink]="['/product/inquiry',productItem.id]">
-        <img [src]="'http://127.0.0.1:8000/storage/'+productItem.attachment[0]" alt={{productItem.product_name}}>
+        <img [src]="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}}>
     </a>
     <a class="secondary_img" [routerLink]="['/product/inquiry/',productItem.id]">
-        <img [src]="'http://127.0.0.1:8000/storage/'+productItem.attachment[1]" alt={{productItem.product_name}}>
+        <img [src]="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}}>
     </a>
     </div>
     <div class="label_product">
@@ -40,10 +40,10 @@
         </div>
     </div>
     <div class="add_to_cart">
-        <div *ngIf="this.isButtonVisible1">
+        <div *ngIf="isButtonVisible1">
         <a title="Add to cart" type="button" (click)="handleAddToCart(productItem.product_name,productItem.imageURL1)">Add to cart</a>
         </div>
-        <div *ngIf="this.isButtonVisible2">
+        <div *ngIf="isButtonVisible2">
              <a title="Inquiy" type="button" (click)="handleAddToInquiry(productItem.product_name,productItem.imageURL1)" >Inquiry</a>
         </div>
        

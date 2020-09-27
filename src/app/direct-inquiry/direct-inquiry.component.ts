@@ -5,6 +5,7 @@ import { MessangerInquiryService } from '../service/messangerInquiry.service';
 import { Product } from '../models/product';
 import {NotificationsService} from 'angular2-notifications';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-direct-inquiry',
@@ -18,10 +19,13 @@ export class DirectInquiryComponent implements OnInit {
   quantity: any ;
   q: any;
   isLoading: boolean;
+  resourcesBaseUrl: string;
+  
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private msgi: MessangerInquiryService, private service: NotificationsService) { }
 
   ngOnInit() {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.isLoading = true;
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -37,7 +41,7 @@ export class DirectInquiryComponent implements OnInit {
     Swal.fire({
       title: 'One Item Added',
       icon: 'success',
-      imageUrl: 'http://127.0.0.1:8000/storage/' + image[0],
+      imageUrl: this.resourcesBaseUrl + image[0],
       imageWidth: 200,
       imageHeight: 200,
       text: name,

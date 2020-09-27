@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inquiry-cart-view',
@@ -14,11 +15,12 @@ export class InquiryCartViewComponent implements OnInit {
   totalValue: any;
   cartTotal: any;
   flatRate: any = 0;
+  resourcesBaseUrl: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    // this.cartData = JSON.parse(localStorage.getItem('Items'));
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.cartData = this.getData();
     this.calcCartTotal();
     let cartEmty = 0;
@@ -51,7 +53,7 @@ removeData(prod, image, name) {
 
   Swal.fire({
     title: 'Are you sure want to remove ' + name,
-    imageUrl: 'http://127.0.0.1:8000/storage/' + image[0],
+    imageUrl: this.resourcesBaseUrl + image[0],
     imageWidth: 200,
     imageHeight: 200,
     text: 'You won\'t be able to revert this!',

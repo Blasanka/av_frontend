@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../models/product'
+import { Product } from '../models/product';
 import { MessangerService } from '../service/messanger.service';
 import { MessangerWishlistService } from '../service/messengerWishlist.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { MessangerInquiryService } from '../service/messangerInquiry.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -15,15 +16,18 @@ export class ItemComponent implements OnInit {
   private isButtonVisible2 = false;
   featuredProductCat1: any;
   @Input() productItem: Product;
-  constructor(private msg: MessangerService, private msgw: MessangerWishlistService, 
-    private msgi: MessangerInquiryService) {
+  resourcesBaseUrl: string;
+
+  constructor(private msg: MessangerService, private msgw: MessangerWishlistService,
+              private msgi: MessangerInquiryService) {
   }
 
   ngOnInit() {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.displayButton();
   }
 
-  handleAddToCart(name,image){
+  handleAddToCart(name, image) {
     this.msg.sendMsg(this.productItem);
     Swal.fire({
       title: 'One Item Added To Cart',
@@ -36,19 +40,19 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  handleAddToWishlist(){
+  handleAddToWishlist() {
     this.msgw.sendMsgWishlist(this.productItem);
   }
-  handleAddToInquiry(){
+  handleAddToInquiry() {
     this.msgi.sendMsgInquiry(this.productItem);
   }
 
-  displayButton(){
-    if(this.productItem.supplier === 'AV'){
+  displayButton() {
+    if (this.productItem.supplier === 'AV') {
        this.isButtonVisible1 = true;
        this.isButtonVisible2 = false;
     }
-    if(this.productItem.supplier !== 'AV'){
+    if (this.productItem.supplier !== 'AV') {
       this.isButtonVisible1 = false;
       this.isButtonVisible2 = true;
     }

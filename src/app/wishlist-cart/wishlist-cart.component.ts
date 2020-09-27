@@ -3,7 +3,8 @@ import { MessangerWishlistService } from '../service/messengerWishlist.service';
 import { Product } from '../models/product';
 import { CartItemsService } from '../service/cart-items.service'
 import { isNull } from 'util';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-wishlist-cart',
   templateUrl: './wishlist-cart.component.html',
@@ -14,9 +15,12 @@ export class WishlistCartComponent implements OnInit {
   //cartItems = []=JSON.parse(localStorage.getItem('Items'));
   cartItems = [];
   cartTotal = 0;
+  resourcesBaseUrl: string;
+  
   constructor(private msgw: MessangerWishlistService, private cartItemService: CartItemsService) { }
 
   ngOnInit() {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
 
     if(!isNull(JSON.parse(localStorage.getItem('WishlistItems')))){
       this.cartItems = []=JSON.parse(localStorage.getItem('WishlistItems'));
@@ -45,7 +49,7 @@ export class WishlistCartComponent implements OnInit {
       Swal.fire({
         title: 'One Item Added To Wishlist',
         icon: 'success',
-        imageUrl: 'http://127.0.0.1:8000/storage/' + product.attachment[0],
+        imageUrl: this.resourcesBaseUrl + product.attachment[0],
         imageWidth: 200,
         imageHeight: 200,
         text: product.product_name,
