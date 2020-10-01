@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -34,6 +35,7 @@ import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AllProductComponent } from './all-product/all-product.component';
 import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.component';
+import { HomeImageSliderComponent } from './components/shared/home-image-slider/home-image-slider.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.co
     InquiryCartViewComponent,
     AllProductComponent,
     InqueryCheckoutComponent,
+    HomeImageSliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,14 @@ import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.co
     CarouselModule,
   ],
   providers: [CartItemsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HomeImageSliderComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    const slider = createCustomElement(HomeImageSliderComponent, { injector });
+    customElements.define('motley-slider', slider);
+  }
+
+  ngDoBootstrap() {}
+}

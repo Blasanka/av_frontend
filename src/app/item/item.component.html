@@ -32,19 +32,19 @@
     <div class="product_content_inner">
         <h4 class="product_name"><a routerLink="/product/details/{{productItem.id}}">{{productItem.product_name}}</a></h4>
        
-        <h4 class="product_name"><a href="/product/details/{{productItem.id}}">{{productItem.supplier}}</a></h4>
+        <!-- <h4 class="product_name"><a href="/product/details/{{productItem.id}}">{{productItem.supplier}}</a></h4> -->
 
         <div class="price_box">
-            <span class="old_price">Rs. {{productItem.price}}</span>
-            <span class="current_price">{{productItem.priceWithDiscount}}</span>
+            <!-- <span class="old_price">Rs. {{productItem.priceWithDiscount}}</span> -->
+            <span class="current_price">Rs. {{productItem.price}}</span>
         </div>
     </div>
     <div class="add_to_cart">
         <div *ngIf="isButtonVisible1">
-        <a title="Add to cart" type="button" (click)="handleAddToCart(productItem.product_name,productItem.imageURL1)">Add to cart</a>
+        <a title="Add to cart" type="button" (click)="handleAddToCart(productItem.product_name,productItem.attachment[0])">Add to cart</a>
         </div>
         <div *ngIf="isButtonVisible2">
-             <a title="Inquiy" type="button" (click)="handleAddToInquiry(productItem.product_name,productItem.imageURL1)" >Inquiry</a>
+             <a title="Inquiy" type="button" (click)="handleAddToInquiry()" >Inquiry</a>
         </div>
        
     </div>

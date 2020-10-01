@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ItemComponent implements OnInit {
 
-  private isButtonVisible1 = true;
-  private isButtonVisible2 = false;
+  isButtonVisible1 = true;
+  isButtonVisible2 = false;
   featuredProductCat1: any;
   @Input() productItem: Product;
   resourcesBaseUrl: string;

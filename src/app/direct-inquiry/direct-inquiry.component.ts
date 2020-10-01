@@ -6,6 +6,7 @@ import { Product } from '../models/product';
 import {NotificationsService} from 'angular2-notifications';
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-direct-inquiry',
@@ -20,7 +21,32 @@ export class DirectInquiryComponent implements OnInit {
   q: any;
   isLoading: boolean;
   resourcesBaseUrl: string;
-  
+
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 0
+      },
+      400: {
+        items: 3
+      },
+      740: {
+        items: 4
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: false
+  };
+
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private msgi: MessangerInquiryService, private service: NotificationsService) { }
 

@@ -63,8 +63,8 @@ export class ProductDetailComponent implements OnInit {
 
   handleAddToCart(image, name) {
     const currentQty = localStorage.getItem('quantity');
-    const newQty = Number.parseInt(currentQty, 10) + 1;
     if (currentQty != null) {
+      const newQty = Number.parseInt(currentQty, 10) + 1;
       localStorage.setItem('quantity', JSON.stringify(newQty));
     } else {
       localStorage.setItem('quantity', JSON.stringify(1));

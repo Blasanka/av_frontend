@@ -93,8 +93,15 @@ export class CartComponent implements OnInit {
             this.cart.subTotal -= removedItem[0].itemTotal;
             this.cart.cartTotal -= removedItem[0].itemTotal;
             this.updateCart();
-            localStorage.setItem('quantity', JSON.stringify(removedItem[0].product.quantity));
+            this.decreaseStorageQuantityOnCart(removedItem[0].product.quantity);
           }
+        }
+        if (this.cart.cartItems.length === 0) {
+          localStorage.removeItem('cartSubTotal');
+          localStorage.removeItem('cartShipping');
+          localStorage.removeItem('CartTotal');
+          localStorage.removeItem('Items');
+          localStorage.removeItem('quantity');
         }
         Swal.fire(
           'Deleted!',
@@ -111,8 +118,10 @@ export class CartComponent implements OnInit {
     localStorage.setItem('CartTotal', JSON.stringify(this.cart.cartTotal));
 
     const tempArr = [];
+    let qty = 0;
     this.cart.cartItems.forEach( (element) => {
       tempArr.push(element.product);
+      qty += element.product.quantity;
     });
     localStorage.setItem('Items', JSON.stringify(tempArr));
 
@@ -131,7 +140,7 @@ export class CartComponent implements OnInit {
       this.cart.subTotal += item.product.price;
       this.calcCartTotal(item);
       this.updateCart();
-      localStorage.setItem('quantity', JSON.stringify(item.product.quantity));
+      this.increaseStorageQuantityOnCart();
     }
   }
 
@@ -143,7 +152,7 @@ export class CartComponent implements OnInit {
       this.cart.subTotal -= item.product.price;
       this.calcCartTotal(item);
       this.updateCart();
-      localStorage.setItem('quantity', JSON.stringify(item.product.quantity));
+      this.decreaseStorageQuantityOnCart(1);
     }
   }
 
@@ -151,5 +160,25 @@ export class CartComponent implements OnInit {
     this.cart.flatRate = this.cart.flatRate * item.product.quantity;
     this.cart.shippingCost = item.product.quantity * this.cart.shippingCost;
     this.cart.cartTotal = this.cart.subTotal - this.cart.flatRate + this.cart.shippingCost;
+  }
+
+  increaseStorageQuantityOnCart() {
+    const currentQty = localStorage.getItem('quantity');
+    if (currentQty != null) {
+      const newQty = Number.parseInt(currentQty, 10) + 1;
+      localStorage.setItem('quantity', JSON.stringify(newQty));
+    } else {
+      localStorage.setItem('quantity', JSON.stringify(1));
+    }
+  }
+
+  decreaseStorageQuantityOnCart(num: number) {
+    const currentQty = localStorage.getItem('quantity');
+    if (currentQty != null) {
+      const newQty = Number.parseInt(currentQty, 10) - num;
+      localStorage.setItem('quantity', JSON.stringify(newQty));
+    } else {
+      localStorage.setItem('quantity', JSON.stringify(1));
+    }
   }
 }
