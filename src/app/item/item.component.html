@@ -2,19 +2,19 @@
 <figure>
 <div class="product_thumb">
     <div *ngIf="this.isButtonVisible1">
-    <a class="primary_img" [routerLink]="['/product/details',productItem.id]">
-        <img src="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}}>
+    <a class="primary_img d-flex justify-content-center" [routerLink]="['/product/details', productItem.id]">
+        <img src="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}} style="width: 260px; height: 200px;">
     </a>
-    <a class="secondary_img" [routerLink]="['/product/details',productItem.id]">
-        <img src="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}}>
+    <a class="secondary_img d-flex justify-content-center" [routerLink]="['/product/details', productItem.id]">
+        <img src="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}} style="width: 260px; height: 200px;">
     </a>
     </div>
     <div *ngIf="isButtonVisible2">
-    <a class="primary_img" [routerLink]="['/product/inquiry',productItem.id]">
-        <img [src]="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}}>
+    <a class="primary_img d-flex justify-content-center" [routerLink]="['/product/inquiry', productItem.id]">
+        <img [src]="resourcesBaseUrl+productItem.attachment[0]" alt={{productItem.product_name}} style="width: 260px; height: 200px;">
     </a>
-    <a class="secondary_img" [routerLink]="['/product/inquiry/',productItem.id]">
-        <img [src]="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}}>
+    <a class="secondary_img d-flex justify-content-center" [routerLink]="['/product/inquiry/',productItem.id]">
+        <img [src]="resourcesBaseUrl+productItem.attachment[1]" alt={{productItem.product_name}} style="width: 260px; height: 200px;">
     </a>
     </div>
     <div class="label_product">

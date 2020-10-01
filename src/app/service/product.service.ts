@@ -14,17 +14,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class ProductService {
 
-  // products: Product[] = [
-
-  //   new Product(11,'./../../assets/img/product/product1.jpg','./../../assets/img/product/product2.jpg','product1','testDescription',30,22,'sup1'),
-  //   new Product(12,'./../../assets/img/product/product3.jpg','./../../assets/img/product/product4.jpg','product2','testDescription',40,25,'sup2'),
-  //   new Product(13,'./../../assets/img/product/product5.jpg','./../../assets/img/product/product6.jpg','product3','testDescription',50,32,'sup1'),
-  //   new Product(14,'./../../assets/img/product/product7.jpg','./../../assets/img/product/product8.jpg','product4','testDescription',20,11,'sup2'),
-  //   new Product(52,'./../../assets/img/product/product9.jpg','./../../assets/img/product/product10.jpg','product5','testDescription',90,45,'AV'),
-  //   new Product(62,'./../../assets/img/product/product11.jpg','./../../assets/img/product/product12.jpg','product6','testDescription',60,50,'AV'),
-
-  // ]
-
   constructor(private http: HttpClient) { }
   BASE_URL = environment.baseUrl;
 
@@ -81,8 +70,16 @@ export class ProductService {
       );
   }
 
-  getFeaturedProducts() {
-
+  getFeaturedProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders();
+    headers = this.getHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+    return this.http.get<Product[]>(`${this.BASE_URL}/products/latest`, { headers })
+      .pipe(
+        tap(_ => console.log('fetched products')),
+        catchError(this.handleError<Product[]>('getProducts', []))
+      );
   }
 
   getProduct(id): Observable<Product> {

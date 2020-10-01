@@ -5,6 +5,7 @@ import { MessangerService } from '../service/messanger.service';
 import {NotificationsService} from 'angular2-notifications';
 import Swal from 'sweetalert2';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -18,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
   q: any;
   id: any;
   isLoading: boolean;
+  resourcesBaseUrl: string;
 
   customOptions: OwlOptions = {
     loop: false,
@@ -48,6 +50,7 @@ export class ProductDetailComponent implements OnInit {
               private msg: MessangerService, private service: NotificationsService) { }
 
   ngOnInit() {
+    this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.isLoading = true;
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -59,6 +62,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   handleAddToCart(image, name) {
+    const currentQty = localStorage.getItem('quantity');
+    const newQty = Number.parseInt(currentQty, 10) + 1;
+    if (currentQty != null) {
+      localStorage.setItem('quantity', JSON.stringify(newQty));
+    } else {
+      localStorage.setItem('quantity', JSON.stringify(1));
+    }
     this.msg.sendMsg(this.oneProduct);
     Swal.fire({
       title: 'One Item Added',

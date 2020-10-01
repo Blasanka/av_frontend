@@ -12,6 +12,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
+import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'privacypolicy', component: PrivacyPolicyComponent},
   {path: 'cart', component: CartComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'inquery-checkout', component: InqueryCheckoutComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'inquirycart', component: InquiryCartViewComponent},
   {path: 'product/details/:id', component: ProductDetailComponent},

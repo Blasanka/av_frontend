@@ -32,6 +32,8 @@ import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.componen
 import { InquiryCartComponent } from './inquiry-cart/inquiry-cart.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AllProductComponent } from './all-product/all-product.component';
+import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     DirectInquiryComponent,
     InquiryCartComponent,
     InquiryCartViewComponent,
+    AllProductComponent,
+    InqueryCheckoutComponent,
   ],
   imports: [
     BrowserModule,

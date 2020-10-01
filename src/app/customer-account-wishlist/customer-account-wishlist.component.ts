@@ -25,38 +25,25 @@ export class CustomerAccountWishlistComponent implements OnInit {
     if (!isNull(JSON.parse(localStorage.getItem('Items')))) {
       this.shoppingCart = [] = JSON.parse(localStorage.getItem('Items'));
     }
-    // this.cartData = JSON.parse(localStorage.getItem('Items'));
     this.cartData = this.getData();
     this.calcCartTotal();
-    let cartEmty = 0;
-    if ((this.cartData === 0) && (cartEmty === 0)) {
-
+    if (this.cartData != null && this.cartData.length === 0) {
       Swal.fire({
-        title: 'Your Cart Is Empty',
+        title: 'Your Whishlist Is Empty',
         imageUrl: './../../assets/img/emptycart.png',
         imageWidth: 400,
         imageHeight: 300,
         text: name,
         footer: '<a href="">Lets Shopping</a>'
       });
-      cartEmty++;
     }
-
-
   }
 
-getData() {
-return JSON.parse(localStorage.getItem('WishlistItems'));
-
-}
-
-calculateProductTotal() {
-  const productTotal = (JSON.parse(localStorage.getItem('WishlistItems')).quantity) *
-    (JSON.parse(localStorage.getItem('WishlistItems')).itemPrice);
-}
+  getData() {
+    return JSON.parse(localStorage.getItem('WishlistItems'));
+  }
 
 removeData(id, image, name) {
-
   Swal.fire({
     title: 'Are you sure want to remove ' + name,
     imageUrl: this.resourcesBaseUrl + image[0],
@@ -83,9 +70,6 @@ removeData(id, image, name) {
       );
     }
   });
-
-
-
   }
 
   updateCart() {
@@ -107,10 +91,12 @@ removeData(id, image, name) {
   }
 
   calcCartTotal() {
-    this.cartTotal = 0;
-    this.cartData.forEach(item => {
-      this.cartTotal += (item.quantity * item.price);
-    });
+    if (this.cartData != null) {
+      this.cartTotal = 0;
+      this.cartData.forEach(item => {
+        this.cartTotal += (item.quantity * item.price);
+      });
+    }
   }
 
   addTocart(f) {

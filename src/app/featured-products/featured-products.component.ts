@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 })
 export class FeaturedProductsComponent implements OnInit {
 
-  products: Product[] = [];
+  featuredProducts: Product[] = [];
   isLoading: boolean;
   constructor(private productService: ProductService) {}
 
@@ -18,9 +18,9 @@ export class FeaturedProductsComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe((products: any) => {
-        this.products = products.data;
+    this.productService.getFeaturedProducts()
+      .subscribe((featuredProducts: any) => {
+        this.featuredProducts = featuredProducts.data;
         this.isLoading = false;
       });
   }

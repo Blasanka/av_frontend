@@ -39,19 +39,20 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <tr *ngFor = "let f of cartData">              
-                                           <td class="product_remove"><a (click)="removeData(f, f.attachment ,f.product_name)"><i class="fa fa-trash-o"></i></a></td>
-                                           <td class="product_thumb"><a [routerLink]="['/product/details', f.id]"><img  [src]="resourcesBaseUrl+f.attachment[0]" alt=""></a></td>
-                                           <td class="product_name"><a href="#">{{f.product_name}}</a></td>
-                                           <td class="product-price">{{f.price}}</td>
-                                           <td class="product_quantity"><label>Quantity</label> <input  min="1" max="100" [value]="f.quantity" type="number" id="quantityid"></td>
-                                           <td class="product_total">{{f.price*f.quantity}}</td>
+                                       <tr *ngFor = "let f of this.inqueryCart.cartItems">              
+                                           <td class="product_remove"><a (click)="removeData(f, f.product.attachment ,f.product.product_name)"><i class="fa fa-trash-o"></i></a></td>
+                                           <td class="product_thumb"><a [routerLink]="['/product/details', f.id]"><img  [src]="resourcesBaseUrl+f.product.attachment[0]" alt=""></a></td>
+                                           <td class="product_name"><a href="#">{{f.product.product_name}}</a></td>
+                                           <td class="product-price">{{f.product.price}}</td>
+                                           <td class="product_quantity">
+                                                <p class="mr-3" style="font-size: large; display: inline;">{{f.product.quantity}}</p>
+                                                <button class="btn btn-success btn-xs plus mr-2" (click)="addQty(f.product.id)"><i class="fa fa-plus"></i></button><!-- (click)="addQty(f.product.id)-->
+                                                <button class="btn btn-danger btn-xs minus" (click)="subtractQty(f.product.id)"><i class="fa fa-minus"></i></button><!--(click)="subtractQty(f.product.id)"-->
+                                            </td>
+                                            <td class="product_total">{{f.itemTotal}}</td>
                                        </tr>
                                    </tbody>
                                </table>
-                           </div>
-                           <div class="cart_submit">
-                               <button type="submit" (click)="updateCart()">update inquiry</button>
                            </div>
                        </div>
                    </div>
@@ -75,23 +76,17 @@
                                <div class="coupon_inner">
                                    <div class="cart_subtotal">
                                        <p>Subtotal</p>
-                                       <p class="cart_amount">{{cartTotal | currency:'LKR'}}</p>
+                                       <p class="cart_amount">{{inqueryCart.subTotal | currency:'Rs. '}}</p>
                                    </div>
-                                   <div class="cart_subtotal ">
-                                       <p>Shipping</p>
-                                       <p class="cart_amount"><span>Flat Rate:</span> {{flatRate | currency:'LKR'}}</p>
-                                   </div>
-                                   <a href="#">Calculate shipping</a>
-
                                    <div class="cart_subtotal">
                                        <p>Total</p>
-                                       <p class="cart_amount">{{cartTotal + flatRate | currency:'LKR'}}</p>
+                                       <p class="cart_amount">{{inqueryCart.cartTotal | currency:'Rs. '}}</p>
                                    </div>
                                    <div class="checkout_btn">
-                                    <a routerLink="/checkout" style="width: 180px;">Contact Dealer</a>
+                                    <a routerLink="/inquery-checkout" style="width: 180px;">Contact Dealer</a>
                                 </div>
                                    <div class="checkout_btn">
-                                       <a routerLink="/checkout">Proceed to Checkout</a>
+                                       <a routerLink="/inquery-checkout">Proceed to Checkout</a>
                                    </div>
                                </div>
                            </div>

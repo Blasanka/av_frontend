@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class CartComponent implements OnInit {
 
-  cartData: any;
   id: any;
   interval: any;
   totalValue: any;
@@ -24,18 +23,8 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.resourcesBaseUrl = environment.resourcesBaseUrl;
     this.cart = new Cart(1, [], 0, 0, 0);
-    this.getCartItems().forEach( (element) => {
-      const itemTotal = element.quantity * element.price;
-      const cartItem = (new CartItem(element.id, element, itemTotal));
-      this.cart.cartItems.push(cartItem);
-      this.cart.subTotal += cartItem.itemTotal;
-      this.calcCartTotal(cartItem);
-    });
-    this.getCartShippingCost();
-    this.getCartSubTotal();
-    this.getCartTotal();
-    const cartEmty = this.cart.cartItems.length;
-    if (cartEmty === 0) {
+    const cartItems = this.getCartItems();
+    if (cartItems != null && cartItems.length === 0) {
       Swal.fire({
         title: 'Your Cart Is Empty',
         imageUrl: './../../assets/img/emptycart.png',
@@ -44,6 +33,17 @@ export class CartComponent implements OnInit {
         text: name,
         footer: '<a href="">Lets Shopping</a>'
       });
+    } else {
+      cartItems.forEach( (element) => {
+        const itemTotal = element.quantity * element.price;
+        const cartItem = (new CartItem(element.id, element, itemTotal));
+        this.cart.cartItems.push(cartItem);
+        this.cart.subTotal += cartItem.itemTotal;
+        this.calcCartTotal(cartItem);
+      });
+      this.getCartShippingCost();
+      this.getCartSubTotal();
+      this.getCartTotal();
     }
   }
 
@@ -89,8 +89,11 @@ export class CartComponent implements OnInit {
       if (result.value) {
         for (let i = 0; i < this.cart.cartItems.length; i++) {
           if (this.cart.cartItems[i].id === id) {
-            this.cart.cartItems.splice(i, 1);
+            const removedItem = this.cart.cartItems.splice(i, 1);
+            this.cart.subTotal -= removedItem[0].itemTotal;
+            this.cart.cartTotal -= removedItem[0].itemTotal;
             this.updateCart();
+            localStorage.setItem('quantity', JSON.stringify(removedItem[0].product.quantity));
           }
         }
         Swal.fire(
@@ -128,6 +131,7 @@ export class CartComponent implements OnInit {
       this.cart.subTotal += item.product.price;
       this.calcCartTotal(item);
       this.updateCart();
+      localStorage.setItem('quantity', JSON.stringify(item.product.quantity));
     }
   }
 
@@ -139,6 +143,7 @@ export class CartComponent implements OnInit {
       this.cart.subTotal -= item.product.price;
       this.calcCartTotal(item);
       this.updateCart();
+      localStorage.setItem('quantity', JSON.stringify(item.product.quantity));
     }
   }
 

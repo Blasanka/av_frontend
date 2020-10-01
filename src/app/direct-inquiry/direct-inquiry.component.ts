@@ -37,6 +37,13 @@ export class DirectInquiryComponent implements OnInit {
   }
 
   handleAddToCart(image, name) {
+    const currentQty = localStorage.getItem('InquiryQuantity');
+    const newQty = Number.parseInt(currentQty, 10) + 1;
+    if (currentQty != null) {
+      localStorage.setItem('InquiryQuantity', JSON.stringify(newQty));
+    } else {
+      localStorage.setItem('InquiryQuantity', JSON.stringify(1));
+    }
     this.msgi.sendMsgInquiry(this.oneProduct);
     Swal.fire({
       title: 'One Item Added',
