@@ -1,0 +1,40 @@
+<div class="search_container">
+  <form [formGroup]="searchForm" (ngSubmit)="searchProduct()" >
+    <div class="hover_category">
+      <select class="select_option" name="select" id="categori2" formControlName="category_id">
+        <option value="0" selected>All Categories</option>
+        <option [value]="cat.id" *ngFor="let cat of categories">{{cat.category_name}}</option>
+        <!-- <option value="2">Accessories</option>
+              <option value="3">Accessories & More</option>
+              <option value="4">Butters & Eggs</option>
+              <option value="5">Camera & Video </option>
+              <option value="6">Mornitors</option>
+              <option value="7">Tablets</option>
+              <option value="8">Laptops</option>
+              <option value="9">Handbags</option>
+              <option value="10">Headphone & Speaker</option>
+              <option value="11">Herbs & botanicals</option>
+              <option value="12">Vegetables</option>
+              <option value="13">Shop</option>
+              <option value="14">Laptops & Desktops</option>
+              <option value="15">Watchs</option>
+              <option value="16">Electronic</option> -->
+      </select>
+    </div>
+    <div class="search_box">
+      <input placeholder="Search product..." type="text"
+        [ngClass]=" {'is-invalid': searchForm && lf.name.invalid, 'is-valid': searchForm && !lf.name.invalid }"
+        id="name" 
+        formControlName="name"
+        value="" >
+      <button type="submit">
+        <span *ngIf="!isCategoryLoading">Search</span>
+        <div *ngIf="isCategoryLoading == true" class="justify-content-center">
+          <div class="spinner-border text-danger m-1" role="status">
+              <span class="sr-only"></span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

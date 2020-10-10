@@ -13,6 +13,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { DirectInquiryComponent } from './direct-inquiry/direct-inquiry.component';
 import { InquiryCartViewComponent } from './inquiry-cart-view/inquiry-cart-view.component';
 import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.component';
+import { SearchListViewComponent } from './template/search-list-view/search-list-view.component';
+import { SearchLoadingComponent } from './template/search-loading/search-loading.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'inquirycart', component: InquiryCartViewComponent},
   {path: 'product/details/:id', component: ProductDetailComponent},
   {path: 'product/inquiry/:id', component: DirectInquiryComponent},
+  {path: 'search/result/:name', component: SearchListViewComponent},
+  {path: 'search/result', component: SearchLoadingComponent},
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+.visibe_main_menu{
+    display: block
+}
+.hide_main_menu{
+    display: none
+}
+
+.visible_cart{
+    display: block;
+}
+
+.hide_cart{
+    display: none;
+}

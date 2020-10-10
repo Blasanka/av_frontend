@@ -62,7 +62,7 @@
                                     <button class="button" type="submit"  (click)="handleAddToCart(oneProduct.attachment[0], oneProduct.product_name)">add to cart</button>
                                 </div>
                                 <div class="product_meta">
-                                    <span>Category: <a href="#">Clothing</a></span>
+                                    <span>Category: <a href="/{oneProduct.category_name">{{oneProduct.category_name}}</a></span>
                                 </div>
 
                             </form>
@@ -101,6 +101,53 @@
             </div>
             <!--product info end-->
         </div>
+        <!--product area start-->
+        <section class="product_area related_products" *ngIf="relatedProducts !== undefined">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>Related Products </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product_style product_column5" style="display:flex!important">
+                <div class="grid">
+                    <ng-container *ngFor="let product of relatedProducts">
+                        <app-item [productItem]="product"></app-item>
+                    </ng-container>
+                </div>
+                <div *ngIf="isRelatedProductLoading" class="d-flex justify-content-center">
+                    <div class="spinner-border text-danger m-5" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--product area end-->
+        
+        <!--product area start-->
+        <section class="product_area related_products" *ngIf="relatedProducts !== undefined">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>You may like</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product_style product_column5" style="display:flex!important">
+                <div class="grid">
+                    <ng-container *ngFor="let product of youMayLikeProducts">
+                        <app-item [productItem]="product"></app-item>
+                    </ng-container>
+                </div>
+                <div *ngIf="isMayLikeProductLoading" class="d-flex justify-content-center">
+                    <div class="spinner-border text-danger m-5" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--product area end-->
     </div>
 </div>
 

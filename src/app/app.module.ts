@@ -36,6 +36,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AllProductComponent } from './all-product/all-product.component';
 import { InqueryCheckoutComponent } from './inquery-checkout/inquery-checkout.component';
 import { HomeImageSliderComponent } from './components/shared/home-image-slider/home-image-slider.component';
+import { CategoryComponent } from './template/category/category.component';
+import { SearchMainCategoryComponent } from './template/search-main-category/search-main-category.component';
+import { SearchListViewComponent } from './template/search-list-view/search-list-view.component';
+import { SearchLoadingComponent } from './template/search-loading/search-loading.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { HomeImageSliderComponent } from './components/shared/home-image-slider/
     AllProductComponent,
     InqueryCheckoutComponent,
     HomeImageSliderComponent,
+    CategoryComponent,
+    SearchMainCategoryComponent,
+    SearchListViewComponent,
+    SearchLoadingComponent,
   ],
   imports: [
     BrowserModule,

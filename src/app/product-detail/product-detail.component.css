@@ -18,3 +18,10 @@
   background-position: 50% 50%;
   border: 1px solid lightgray;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 40px;
+  padding: 10px;
+}

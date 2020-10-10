@@ -94,6 +94,42 @@ export class ProductService {
       );
   }
 
+  getRelatedProducts(subCategoryId: any, productId: any): Observable<Product> {
+    let headers = new HttpHeaders();
+    headers = this.getHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+    return this.http.get<Product>(`${this.BASE_URL}/products/related/${subCategoryId}?productId=${productId}`, { headers })
+      .pipe(
+        tap(_ => console.log('fetched related products')),
+        catchError(this.handleError<Product>('getRelatedProducts', null))
+      );
+  }
+
+  getMayLikeProducts(categoryId: any, productId: any): Observable<Product> {
+    let headers = new HttpHeaders();
+    headers = this.getHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+    return this.http.get<Product>(`${this.BASE_URL}/products/may-like/${categoryId}?productId=${productId}`, { headers })
+      .pipe(
+        tap(_ => console.log('fetched may like products')),
+        catchError(this.handleError<Product>('getMayLikeProducts', null))
+      );
+  }
+
+  search(data: any): Observable<Product[]> {
+    let headers = new HttpHeaders();
+    headers = this.getHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+    return this.http.post<Product[]>(`${this.BASE_URL}/search/products`, data, { headers })
+      .pipe(
+        tap(_ => console.log('fetched filtered products')),
+        catchError(this.handleError<Product[]>('search', []))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
