@@ -62,17 +62,14 @@ export class ProductDetailComponent implements OnInit {
       });
     this.productService.getProduct(this.id).subscribe((res: any) => {
       this.oneProduct = res.data;
-      console.log(this.oneProduct);
       this.isLoading = false;
       this.productService.getRelatedProducts(this.oneProduct.sub_category_id, this.oneProduct.id)
         .subscribe((rel: any) => {
           this.relatedProducts = rel.data;
           this.isRelatedProductLoading = false;
-          console.log(rel.data);
           this.productService.getMayLikeProducts(this.oneProduct.category_id, this.oneProduct.id)
             .subscribe((may: any) => {
               this.youMayLikeProducts = may.data;
-              console.log(may.data);
               this.isMayLikeProductLoading = false;
             });
       });

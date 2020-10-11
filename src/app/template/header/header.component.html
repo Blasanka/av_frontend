@@ -27,8 +27,17 @@
                         <div class="header_top_settings text-right">
                             <ul>
                                 <li><a href="#">Store Locations</a></li>
-                                <li><a routerLink="/login">Log in</a></li>
-                                <li><a routerLink="/register">Sign up</a></li>
+                                <span *ngIf="!isLoggedIn()">
+                                    <li><a routerLink="/login">Log in</a></li>
+                                    <li><a routerLink="/register">Sign up </a></li>
+                                    <li></li>
+                                </span>
+                                <li *ngIf="isLoggedIn()">
+                                    <a routerLink="/profile">{{username}}&nbsp;</a>
+                                </li>
+                                <li *ngIf="isLoggedIn()">
+                                    <a href="" (click)="logout()">Logout &nbsp;</a>
+                                </li>
                                 <li><a href="#">Track Your Order</a></li>
                                 <li>Hotline: <a href="tel:+(012)800456789">(012) 800 456 789 </a></li>
                             </ul>
@@ -130,7 +139,7 @@
                             <div class="mini_cart_wrapper">
                                 <a href="javascript:void(0)">
                                     <i class="fa fa-shopping-bag" routerLink="/cart"></i>
-                                    <span class="cart_price" (click)="visibleSideCart()">LKR {{totalcartValue}}<i class="ion-ios-arrow-down"></i></span>
+                                    <span class="cart_price" (click)="visibleSideCart()">Rs. {{totalcartValue}}<i class="ion-ios-arrow-down"></i></span>
                                     <span class="cart_count">{{quantity}}</span>
 
                                 </a>
@@ -155,11 +164,11 @@
                 <div class="mini_cart_table">
                     <div class="cart_total">
                         <span>Sub total:</span>
-                        <span class="price">$138.00</span>
+                        <span class="price">$000.00</span>
                     </div>
                     <div class="cart_total mt-10">
                         <span>total:</span>
-                        <span class="price">$138.00</span>
+                        <span class="price">Rs. {{totalcartValue}}</span>
                     </div>
                 </div>
                 <div class="mini_cart_footer">

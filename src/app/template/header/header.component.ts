@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,10 @@ export class HeaderComponent implements OnInit {
   WishlistQuantity: any;
   InquryQuantity: any;
   SupplierName: any;
-  constructor() {
+  username: string;
+
+  constructor(
+    private api: AuthService, private router: Router) {
 
   }
 
@@ -23,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
     const menuclass = document.getElementsByClassName('categories_menu_toggle')[0];
     menuclass.classList.add('hide_main_menu');
+    this.username = localStorage.getItem('username');
 
     this.interval = setInterval(() => {
       this.cartData = this.getData();
@@ -49,8 +55,17 @@ getData() {
     } else {
       cartclass.classList.remove('visible_cart');
       cartclass.classList.add('hide_cart');
-      }
+    }
 
+  }
+
+  isLoggedIn(): boolean {
+    return this.api.isUserLoggedIn();
+  }
+
+  logout() {
+    this.api.logout();
+    this.router.navigate(['/']);
   }
 
 }
